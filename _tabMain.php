@@ -16,6 +16,7 @@ use rent\entities\Shop\Order\Order;
 use rent\forms\manage\Shop\Order\Item\BlockForm;
 use rent\entities\Shop\Order\Item\ItemBlock;
 use rent\entities\Shop\Service;
+use kartik\file\FileInput;
 /**
  * Created by PhpStorm.
  * User: Алексей
@@ -96,7 +97,17 @@ use rent\entities\Shop\Service;
             <?= $form->field($model, 'note')->textInput(['maxlength' => true,'disabled' => $order->readOnly('note')]) ?>
         </div>
     </div>
-
+            <?= $form->field($model, 'sketch')->label('Добавить эскиз')-> widget(FileInput::class,[
+                    'options' => [
+                            'multiple'=>true,
+                    ],
+                'pluginOptions' => [
+                        'showPreview' => false,
+                        'showCaption' => true,
+                        'showRemove' => true,
+                        'showUpload' => false,
+                ]
+            ]) ?>
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($order, 'current_status')->dropDownList(OrderHelper::statusList(), ['prompt' => 'Выберите','disabled' => true]) ?>
@@ -433,5 +444,4 @@ $this->registerJsFile('/admin/js/shop/order.js', ['depends' => 'yii\web\YiiAsset
 if ($modalCreateForm) :?>
     <?= $modalCreateForm ?>
 <? endif; ?>
-
 
