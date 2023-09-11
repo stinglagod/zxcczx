@@ -105,17 +105,6 @@ use rent\entities\Shop\Service;
             <?= $form->field($model, 'responsible_id')->dropDownList(User::getResponsibleList(), ['prompt' => 'Выберите','disabled' => $order->readOnly('responsible_id')]) ?>
         </div>
     </div>
-    <?= $form->field($model,'sketch')->label('Добавить эскиз')-> widget(\kartik\file\FileInput::class, [
-        'options' => [
-            'multiple'=> true,
-        ],
-        'pluginOptions'=>[
-            'showPreview' => False,
-            'showCaption'=> true,
-            'showRemove'=> true,
-            'showUpload' => true,
-        ]
-    ]) ?>
     <div class="row">
         <div class="col-md-6">
 <!--            --><?//=$model->status->name?>
@@ -444,4 +433,5 @@ $this->registerJsFile('/admin/js/shop/order.js', ['depends' => 'yii\web\YiiAsset
 if ($modalCreateForm) :?>
     <?= $modalCreateForm ?>
 <? endif; ?>
+
 
