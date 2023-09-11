@@ -22,7 +22,7 @@ use rent\helpers\OrderHelper;
 /* @var $payments_provider \yii\data\ActiveDataProvider */
 /* @var $payments_form \rent\forms\manage\Shop\Order\PaymentForm */
 /* @var $modalCreateForm string */
-/* @var $uploadedFiles \common\models\UploadedFile */
+
 
 $this->title = OrderHelper::orderName($order);
 
@@ -55,15 +55,14 @@ $items = [
         'content'=>$this->render('movement/_tabMovement', [
             'order'=>$order,
             'dataProvider' => $movements_provider,
+
         ]),
     ],
     [
-        'label' => '<i class="glyphicon glyphicon-list-alt"></i>Эскизы',
-        'content'=>$this->render('_tabSketch'), [
-                'order'=>$order,
-        'model'=>$model,
-    ]
-    ]
+        'label'=>'<i class="glyphicon glyphicon-list-alt"></i> Эскизы',
+        'content'=>$this->render('_tabSketch', [
+        ]),
+    ],
 //    [
 //        'label'=>'<i class="glyphicon glyphicon-list-alt"></i> Движения товаров',
 //        'content'=>$this->render('_tabWarehouse', [
