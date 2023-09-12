@@ -28,6 +28,7 @@ use kartik\file\FileInput;
 /* @var $itemBlocks_provider \yii\data\ActiveDataProvider */
 /* @var $service_provider \yii\data\ActiveDataProvider */
 /* @var $modalCreateForm string */
+
 ?>
 
 <div class="tab-main" id="tab-main">
@@ -97,17 +98,7 @@ use kartik\file\FileInput;
             <?= $form->field($model, 'note')->textInput(['maxlength' => true,'disabled' => $order->readOnly('note')]) ?>
         </div>
     </div>
-            <?= $form->field($model, 'sketch')->label('Добавить эскиз')-> widget(FileInput::class,[
-                    'options' => [
-                            'multiple'=>true,
-                    ],
-                'pluginOptions' => [
-                        'showPreview' => false,
-                        'showCaption' => true,
-                        'showRemove' => true,
-                        'showUpload' => false,
-                ]
-            ]) ?>
+    <?= $form->field($model, 'files[]')->fileInput(['multiple' => true]) ?>
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($order, 'current_status')->dropDownList(OrderHelper::statusList(), ['prompt' => 'Выберите','disabled' => true]) ?>
@@ -444,3 +435,4 @@ $this->registerJsFile('/admin/js/shop/order.js', ['depends' => 'yii\web\YiiAsset
 if ($modalCreateForm) :?>
     <?= $modalCreateForm ?>
 <? endif; ?>
+
