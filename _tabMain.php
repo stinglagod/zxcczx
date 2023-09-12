@@ -444,4 +444,3 @@ $this->registerJsFile('/admin/js/shop/order.js', ['depends' => 'yii\web\YiiAsset
 if ($modalCreateForm) :?>
     <?= $modalCreateForm ?>
 <? endif; ?>
-
