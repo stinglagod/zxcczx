@@ -61,6 +61,8 @@ $items = [
     [
         'label'=>'<i class="glyphicon glyphicon-list-alt"></i> Эскизы',
         'content'=>$this->render('_tabSketch', [
+            'model' => $model,
+            'sketchPaths' => $model->getSketchPaths()
         ]),
     ],
 //    [
